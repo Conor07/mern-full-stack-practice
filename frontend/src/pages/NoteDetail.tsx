@@ -107,48 +107,54 @@ const NoteDetail: React.FC<NoteDetailProps> = ({}) => {
             </button>
           </div>
 
-          <div className="card bg-base-100">
-            <div className="card-body">
-              <div className="form-control mb-4">
-                <label className="label">
-                  <span className="label-text">Title</span>
-                </label>
+          {note ? (
+            <div className="card bg-base-100">
+              <div className="card-body">
+                <div className="form-control mb-4">
+                  <label className="label">
+                    <span className="label-text">Title</span>
+                  </label>
 
-                <input
-                  type="text"
-                  placeholder="Note Title"
-                  className="input input-bordered"
-                  value={note.title}
-                  onChange={(e) => setNote({ ...note, title: e.target.value })}
-                />
-              </div>
+                  <input
+                    type="text"
+                    placeholder="Note Title"
+                    className="input input-bordered"
+                    value={note.title}
+                    onChange={(e) =>
+                      setNote({ ...note, title: e.target.value })
+                    }
+                  />
+                </div>
 
-              <div className="form-control mb-4">
-                <label className="label">
-                  <span className="label-text">Content</span>
-                </label>
+                <div className="form-control mb-4">
+                  <label className="label">
+                    <span className="label-text">Content</span>
+                  </label>
 
-                <textarea
-                  placeholder="Write your note here..."
-                  className="textarea textarea-bordered h-32 resize-none"
-                  value={note.content}
-                  onChange={(e) =>
-                    setNote({ ...note, content: e.target.value })
-                  }
-                />
-              </div>
+                  <textarea
+                    placeholder="Write your note here..."
+                    className="textarea textarea-bordered h-32 resize-none"
+                    value={note.content}
+                    onChange={(e) =>
+                      setNote({ ...note, content: e.target.value })
+                    }
+                  />
+                </div>
 
-              <div className="card-actions justify-end">
-                <button
-                  className="btn btn-primary"
-                  disabled={saving}
-                  onClick={handleSave}
-                >
-                  {saving ? "Saving..." : "Save Note"}
-                </button>
+                <div className="card-actions justify-end">
+                  <button
+                    className="btn btn-primary"
+                    disabled={saving}
+                    onClick={handleSave}
+                  >
+                    {saving ? "Saving..." : "Save Note"}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <h3 className="text-2xl font-bold">No note details</h3>
+          )}
         </div>
       </div>
     </div>
